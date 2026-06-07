@@ -154,6 +154,17 @@ Kamakhya Devalayama ,kamakhya temple, maa kamakhya, kamakhya temple, bhubaneswar
             from { opacity: 0; transform: translateY(-5px); }
             to { opacity: 1; transform: translateY(0); }
         }
+        .profile-area{
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .user-photo {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
         .faq-window {
   z-index: 1100;
 }
@@ -165,8 +176,11 @@ Kamakhya Devalayama ,kamakhya temple, maa kamakhya, kamakhya temple, bhubaneswar
 
     <div class="faq-window" id="faqWindow">
         <div class="faq-header">
-            <span> आपका सवाल ?</span>
-            <span class="close-btn" id="closeBtn">&times;</span>
+            <div class="profile-area">
+                <img src="image/IMG-20260425-WA0012.jpg" alt="Profile Image" class="user-photo">
+                            <span> आपका सवाल ?</span>
+            </div>
+             <span class="close-btn" id="closeBtn">&times;</span>
         </div>
         <div class="faq-body" id="faqBody">
             <!-- 1. कुंडली मिलान -->
