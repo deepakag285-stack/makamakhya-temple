@@ -13,6 +13,13 @@
             <meta name="twitter:description" content="ma kamakhya temple | ma kamakhya | माँ कामाख्या मंदिर"/>
             <meta name="twitter:image" content=" https://deepakag285-stack.github.io/makamakhya-temple/image/IMG-20260508-WA0009.jpg"/>
             <link rel="icon" type="image/x-icon" href="favicon.ico" sizes="256*256">
+            <link rel="icon" type="image/x-icon" href="favicon.ico" sizes="256*256">
+            <link rel="apple-touch-icon" href="favicon.ico" sizes="256*256">
+            <link rel="apple-touch-icon" href="favicon.ico" sizes="256*256">
+            <link rel="shortcut icon" href="favicon.ico" sizes="256*256">
+            <link rel="shortcut icon" href="favicon.ico" sizes="256*256">
+            <link rel="alternate" href=" " hreflang="en">
+            <link rel="manifest" href="manifest.json">
             <link rel="alternate" href=" " hreflang="en">
             <link rel="alternate" href=" " hreflang="hi">
          <link rel="shortcut icon" href="favicon.ico" sizes="256*256">
@@ -680,6 +687,68 @@ h1 {
 h1:hover { background: rgba(0,0,0,0.8); 
 }
 </style>
+<button id="installbtn" style="display: none; padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer; margin-left: 3cm;">Install App</button>
+ <script>
+    let deferredPrompt;
+const installBtn = document.getElementById('installBtn');
+
+// 1. Browser check karega ki manifest valid hai ya nahi
+window.addEventListener('beforeinstallprompt', (e) => {
+    // Browser ka default popup rokein taaki hum apna custom tarika use kar sakein
+    e.preventDefault();
+    // Event ko save karlein baad mein use karne ke liye
+    deferredPrompt = e;
+    
+    // Ab user ko "Download App" ka button dikha dein
+    installBtn.style.display = 'block';
+    
+    // AGAR AAPKO BILKUL FORCE KARNA HAI: Toh site khulte hi bina click ke popup trigger karne ki koshish karein
+    // Note: Yeh tabhi chalega agar user ne pehle kabhi site visit ki ho ya thoda interact kiya ho
+    setTimeout(() => {
+        triggerPrompt();
+    }, 1000); // Site khulne ke 1 second baad
+});
+
+// 2. Button par click hone par popup dikhane ka function
+installBtn.addEventListener('click', () => {
+    triggerPrompt();
+});
+
+function triggerPrompt() {
+    if (deferredPrompt) {
+        // Asli browser popup dikhayein
+        deferredPrompt.prompt();
+        
+        // User ka choice check karein (ki usne install kiya ya cancel)
+        deferredPrompt.userChoice.then((choiceResult) => {
+            if (choiceResult.outcome === 'accepted') {
+                console.log('User ne app install kar li! 🎉');
+            } else {
+                console.log('User ne cancel kar diya. 😢');
+            }
+            // Prompt ko clear kardein, yeh ek hi baar use ho sakta hai
+            deferredPrompt = null;
+            installBtn.style.display = 'none';
+        });
+    }
+}
+
+// 3. Agar app pehle se installed hai, toh button chupayein
+window.addEventListener('appinstalled', () => {
+    console.log('PWA successfully install ho chuka hai.');
+    installBtn.style.display = 'none';
+});
+
+ </script>
+ <script>
+    if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+            .then(reg => console.log('Service Worker Registered!', reg))
+            .catch(err => console.error('Service Worker Registration Failed!', err));
+    });
+}
+ </script>
  <script> 
  let currentIndex = 0;
 const slides = document.querySelectorAll('.slide');

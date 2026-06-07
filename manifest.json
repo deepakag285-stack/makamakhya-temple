@@ -1,0 +1,21 @@
+{
+  "name": "माँ कामाख्या",
+  "short_name": "माँ कामाख्या",
+  "description": "This is my first installable website on GitHub Pages!",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "green",
+  "theme_color": "#317EFB",
+  "icons": [
+    {
+      "src": "image/IMG-20260418-WA0001(1).jpg",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "image/IMG-20260418-WA0001(1).jpg",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
