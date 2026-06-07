@@ -66,6 +66,49 @@ Kamakhya Devalayama ,kamakhya temple, maa kamakhya, kamakhya temple, bhubaneswar
         <h2>             🔱 माँ कामाख़्या ज्योतिष पीठ में आपका स्वागत है! 🔱
 </h2>
           </marquee>
+     <script>
+        // 🔴 ROZ KA NAYA TEXT: Kal aap yahan text badal kar "News 2" kar dena
+const aajKaMessage = "News 1: Aaj mausam bohot suhana hai aur dhoop nikli hai!"; 
+
+// Jaise hi user app/page khole, ye function apne aap chalega
+window.onload = function() {
+    // Check karna ki kya user ne pehle se permission de rakhi hai
+    if (Notification.permission === "granted") {
+        showDailyNotification();
+    }
+};
+
+// Button par click karne par permission maangna
+document.getElementById('allow-btn').addEventListener('click', () => {
+    if (!("Notification" in window)) {
+        alert("Aapka browser notifications support nahi karta.");
+        return;
+    }
+
+    Notification.requestPermission().then(permission => {
+        if (permission === "granted") {
+            alert("Notification ON ho gayi hai!");
+            showDailyNotification();
+        } else {
+            alert("Aapne permission block kar di.");
+        }
+    });
+});
+
+// Notification dikhane ka function
+function showDailyNotification() {
+    const options = {
+        body: aajKaMessage, // Aapka badla hua naya text yahan show hoga
+        icon: 'https://via.placeholder.com/100', // App ka logo
+        vibrate: [200, 100, 200]
+    };
+
+    // Screen par alert dikhana
+    new Notification("Aaj Ki Taza Khabar! 🚨", options);
+}
+
+
+    </script>
           <style>
         /* Floating Button (Question Mark) - Bottom Left */
         .faq-floating-btn {
