@@ -60,6 +60,71 @@ Kamakhya Devalayama ,kamakhya temple, maa kamakhya, kamakhya temple, bhubaneswar
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
 <body>
+    <div id="welcome-overlay">
+    <div class="banner-content">
+        <img src="image/1000094347.jpg" alt="Maa Kamakhya Jyotish Pith" class="rotating-banner">
+    </div>
+</div>
+    <style> 
+    #welcome-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.95); /* पीछे का बैकग्राउंड हल्का सफेद दिखेगा */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999; /* यह बैनर बाकी सब चीजों के ऊपर रहेगा */
+    transition: opacity 1s ease-out, visibility 1s; /* गायब होने का स्मूथ इफेक्ट */
+}
+
+/* फोटो का साइज और घूमने (Rotation) का एनीमेशन */
+.rotating-banner {
+    max-width: 90%;
+    max-height: 80vh;
+    border-radius: 10px;
+    box-shadow: 0px 10px 30px rgba(0,0,0,0.2);
+    
+    /* घूमने वाला एनीमेशन (1.5 सेकंड तक घूमेगा) */
+    animation: spinAndPop 1.5s ease-out forwards;
+}
+
+/* एनीमेशन की सेटिंग */
+@keyframes spinAndPop {
+    0% {
+        transform: scale(0) rotate(-180deg);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+    }
+}
+
+/* जब जावास्क्रिप्ट इस क्लास को जोड़ेगा, तो फोटो गायब हो जाएगी */
+.fade-out {
+    opacity: 0;
+    visibility: hidden;
+}
+</style>
+<script> 
+window.addEventListener('DOMContentLoaded', () => {
+    // 3500 मिलीसेकंड (यानी 3.5 सेकंड) के बाद बैनर अपने आप गायब होना शुरू हो जाएगा
+    setTimeout(() => {
+        const overlay = document.getElementById('welcome-overlay');
+        if (overlay) {
+            overlay.classList.add('fade-out'); // गायब होने वाला इफेक्ट शुरू करें
+            
+            // पूरी तरह से हटाने के लिए थोड़ा और समय दें ताकि एनीमेशन स्मूथ दिखे
+            setTimeout(() => {
+                overlay.style.display = 'none';
+            }, 1000); 
+        }
+    }, 3500); // आप इस समय (3500) को अपने हिसाब से कम या ज्यादा कर सकते हैं
+});
+</script>
     <a href="https://deepakag285-stack.github.io/pandit/"><button class="btn btn-primary">आचार्य जी की मुख्य वेबसाइट खोलें</button></a>
     <div class="box1">
     <marquee>

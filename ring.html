@@ -1,0 +1,278 @@
+ <!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>हनुमान तंत्र विद्या - इनफिनिटी चक्र</title>
+    <style>
+        /* --- मुख्य बैकग्राउंड --- */
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, #1a0000 0%, #050005 70%, #000000 100%);
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* --- बैकग्राउंड इफ़ेक्ट्स --- */
+        #particleCanvas {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 1; pointer-events: none;
+        }
+
+        .tantra-yantra {
+            position: absolute;
+            width: 600px; height: 600px;
+            border: 2px double #4a0000;
+            border-radius: 50%;
+            opacity: 0.15;
+            z-index: 2;
+            animation: reverseRotate 60s linear infinite;
+        }
+        .tantra-yantra::before {
+            content: '';
+            position: absolute;
+            top: 10%; left: 10%; right: 10%; bottom: 10%;
+            border: 2px solid #ff3300;
+            transform: rotate(45deg);
+        }
+
+        /* --- मुख्य चक्र कंटेनर --- */
+        .ring-container {
+            position: relative;
+            width: 500px;
+            height: 500px;
+            z-index: 3;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* --- घूमता हुआ सुनहरा मंत्र चक्र --- */
+        .golden-ring {
+            position: absolute;
+            width: 100%; height: 100%;
+            border-radius: 50%;
+            background: radial-gradient(circle, transparent 65%, #9a7418 66%, #f1c40f 70%, #f39c12 85%, #9a7418 100%);
+            box-shadow: 0 0 30px rgba(241, 196, 15, 0.4), inset 0 0 20px rgba(0,0,0,0.5);
+            animation: mainRotate 25s linear infinite;
+        }
+
+        /* --- मंत्र टेक्स्ट और आइकन --- */
+        .text-char {
+            position: absolute;
+            left: 50%; top: 10px;
+            transform-origin: 0 240px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #111111;
+            text-shadow: 1px 1px 1px rgba(255,255,255,0.3);
+            white-space: pre;
+        }
+
+        /* --- चक्र के अंदर इमेजेस वाला इनफिनिटी इफ़ेक्ट --- */
+        .image-infinity-core {
+            position: absolute;
+            width: 180px; /* थोड़ा बड़ा किया है */
+            height: 180px;
+            z-index: 4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            border-radius: 50%;
+            /* केंद्र से ऊर्जा का एहसास */
+            box-shadow: 0 0 50px #ff3300, inset 0 0 30px #000;
+        }
+
+        /* हर एक अंदरूनी चक्र (Image Ring) */
+        .nested-image-ring {
+            position: absolute;
+            border-radius: 50%;
+            border: 2px solid #ffaa00; /* सुनहरी/लाल बॉर्डर */
+            background-size: cover;
+            background-position: center;
+            box-shadow: 0 0 10px rgba(255, 68, 0, 0.7);
+            
+            /* इनफिनिटी एनिमेशन: छोटा होकर गायब होना */
+            animation: infiniteNestedLoop 8s linear infinite;
+            opacity: 0;
+        }
+
+        /* नोट: यहाँ आप अपनी 'image.png' का पाथ दें */
+        /* यदि इमेज लोड नहीं होती, तो हम एक डिफ़ॉल्ट कलर दिखाएंगे */
+        .nested-image-ring::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            border-radius: 50%;
+            background-image: url('image/IMG-20260407-WA0007.jpg'); /* <--- आपकी इमेज यहाँ आएगी */
+            background-size: cover;
+            background-position: center;
+            filter: sepia(0.5) hue-rotate(-20deg) saturate(2); /* तंत्र लुक */
+        }
+        /* इमेज न होने पर डिफ़ॉल्ट लुक */
+        .no-image .nested-image-ring::before {
+            background-color: #300; 
+            background-image: none;
+        }
+
+        /* --- एनिमेशन्स --- */
+        @keyframes mainRotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes reverseRotate {
+            0% { transform: rotate(360deg); }
+            100% { transform: rotate(0deg); }
+        }
+
+        /* इनफिनिटी लूप: इमेज बाहर से अंदर जाकर गायब होगी */
+        @keyframes infiniteNestedLoop {
+            0% {
+                width: 180px; height: 180px;
+                opacity: 0;
+                transform: scale(1.1);
+            }
+            10% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            80% {
+                opacity: 1;
+                transform: scale(0.2);
+            }
+            100% {
+                width: 50px; height: 50px; /* केंद्र में छोटा */
+                opacity: 0;
+                transform: scale(0.1);
+            }
+        }
+
+        /* एनिमेशन डिले: हर इमेज अलग समय पर शुरू हो */
+        .nested-image-ring:nth-child(1) { animation-delay: 0s; }
+        .nested-image-ring:nth-child(2) { animation-delay: 1.6s; }
+        .nested-image-ring:nth-child(3) { animation-delay: 3.2s; }
+        .nested-image-ring:nth-child(4) { animation-delay: 4.8s; }
+        .nested-image-ring:nth-child(5) { animation-delay: 6.4s; }
+
+    </style>
+</head>
+<body>
+
+    <!-- बैकग्राउंड इफ़ेक्ट्स -->
+    <canvas id="particleCanvas"></canvas>
+    <div class="tantra-yantra"></div>
+
+    <!-- मुख्य चक्र कंटेनर -->
+    <div class="ring-container">
+        
+        <!-- केंद्र में इमेजेस वाला इनफिनिटी इफ़ेक्ट -->
+        <div class="image-infinity-core" id="infinityCore">
+            <!-- 5 इमेज रिंग्स जो लगातार लूप करेंगे -->
+            <div class="nested-image-ring"></div>
+            <div class="nested-image-ring"></div>
+            <div class="nested-image-ring"></div>
+            <div class="nested-image-ring"></div>
+            <div class="nested-image-ring"></div>
+        </div>
+
+        <!-- घूमता हुआ बाहरी सुनहरा चक्र -->
+        <div class="golden-ring" id="ring">
+            <!-- जावास्क्रिप्ट से मंत्र टेक्स्ट यहाँ आएगा -->
+        </div>
+    </div>
+
+    <script>
+        /* --- मंत्र टेक्स्ट रोटेशन --- */
+        const mantraText = "📿 सब सुख लहै तुम्हारी सरना। तुम रक्षक काहू को डरना।। ";
+        const fullMantra = mantraText.repeat(4); 
+        const ring = document.getElementById('ring');
+        const totalChars = fullMantra.length;
+        
+        for (let i = 0; i < totalChars; i++) {
+            const charSpan = document.createElement('span');
+            charSpan.className = 'text-char';
+            
+            if(fullMantra[i] === "📿") {
+                charSpan.innerHTML = "🔱"; 
+                charSpan.style.fontSize = "22px";
+            } else {
+                charSpan.innerText = fullMantra[i];
+            }
+
+            const angle = (i * 360) / totalChars;
+            charSpan.style.transform = `translateX(-50%) rotate(${angle}deg)`;
+            
+            ring.appendChild(charSpan);
+        }
+
+        /* --- इनफिनिटी इमेज लोड चेक (यदि image.png नहीं है) --- */
+        const infinityCore = document.getElementById('infinityCore');
+        const img = new Image();
+        img.src = 'image/IMG-20260407-WA0007.jpg'; 
+        img.onerror = () => {
+            // यदि इमेज नहीं मिलती, तो डिफ़ॉल्ट लुक दें
+            infinityCore.classList.add('no-image');
+            // एक वार्निंग टेक्स्ट भी डाल सकते हैं
+            const warning = document.createElement('div');
+            warning.style.color = '#ffaa00';
+            warning.style.fontSize = '12px';
+            warning.style.position = 'absolute';
+            warning.style.zIndex = '5';
+            warning.innerText = 'Add image.png';
+            infinityCore.appendChild(warning);
+        };
+
+
+        /* --- तंत्र विद्या बैकग्राउंड कण --- */
+        const canvas = document.getElementById('particleCanvas');
+        const ctx = canvas.getContext('2d');
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        const particles = [];
+        const particleCount = 60;
+
+        class Particle {
+            constructor() { this.reset(); }
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 3 + 1;
+                this.speedX = (Math.random() - 0.5) * 0.8;
+                this.speedY = -Math.random() * 1 - 0.2;
+                this.color = Math.random() > 0.5 ? 'rgba(255, 51, 0, ' + Math.random() + ')' : 'rgba(212, 175, 55, ' + Math.random() + ')';
+            }
+            update() {
+                this.x += this.speedX; this.y += this.speedY;
+                if (this.y < 0 || this.x < 0 || this.x > canvas.width) { this.reset(); }
+            }
+            draw() {
+                ctx.fillStyle = this.color; ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill();
+            }
+        }
+        for (let i = 0; i < particleCount; i++) { particles.push(new Particle()); }
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particles.length; i++) { particles[i].update(); particles[i].draw(); }
+            requestAnimationFrame(animate);
+        }
+        animate();5
+    </script>
+</body>
+</html>
+
