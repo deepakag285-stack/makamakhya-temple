@@ -853,6 +853,21 @@ window.addEventListener('appinstalled', () => {
 
  </script>
  <script>
+    if ('serviceWorker' in navigator && 'PushManager' in window) {
+  navigator.serviceWorker.register('/sw.js')
+    .then((reg) => {
+      console.log('Service Worker Registered');
+      
+      // Notification ki permission maange
+      Notification.requestPermission().then((permission) => {
+        if (permission === 'granted') {
+          console.log('Notification permission granted.');
+        }
+      });
+    });
+}
+
+
     if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
         navigator.serviceWorker.register('/sw.js')
