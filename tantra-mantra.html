@@ -22,8 +22,6 @@
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
 <body>
-
-     
  <style>
     body{
         background-color: orange;
@@ -114,6 +112,489 @@
                 dropdown.selectedIndex = 0;
             }
         }
+    </script>
+    <style>
+        :root {
+            --primary-color: #800020; /* मैरून - मुख्य आध्यात्मिक रंग */
+            --accent-color: #FFD700; /* गोल्डन */
+            --bg-color: #FFF5EE; /* हल्का सात्विक बैकग्राउंड */
+            --text-color: #333;
+            --orange-glow: #FF4500;
+            --sub-header-color: #9c27b0; /* सब-ऑप्शन के लिए जामुनी/तान्त्रिक रंग */
+        }
+
+ 
+        .heading {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .heading h1 {
+            margin: 5px 0;
+            font-size: 2.2rem;
+        }
+
+        .heading p {
+            font-style: italic;
+            color: var(--orange-glow);
+            font-weight: bold;
+        }
+
+        /* Main Accordion Container */
+        .accordion-container {
+            width: 100%;
+            max-width: 750px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+            overflow: hidden;
+            border: 2px solid var(--accent-color);
+        }
+
+        .accordion-item {
+            border-bottom: 1px solid #ffe4e1;
+        }
+
+        .accordion-item:last-child {
+            border-bottom: none;
+        }
+
+        /* Main Header */
+        .accordion-header {
+            width: 100%;
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 18px 20px;
+            text-align: left;
+            border: none;
+            outline: none;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s ease;
+        }
+
+        .accordion-header:hover {
+            background-color: #990026;
+        }
+
+        .accordion-header::after {
+            content: '▼';
+            font-size: 0.9rem;
+            color: var(--accent-color);
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-item.active > .accordion-header::after {
+            transform: rotate(-180deg);
+        }
+
+        /* Main Content Panel */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+            background-color: #fffbf7;
+        }
+
+        /* --- Nested / Sub Accordion Styling --- */
+        .sub-accordion-container {
+            padding: 10px 15px 15px 15px;
+        }
+
+        .sub-item {
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            margin-bottom: 8px;
+            overflow: hidden;
+            background: #fff;
+        }
+
+        .sub-header {
+            width: 100%;
+            background-color: #f4ebee;
+            color: var(--primary-color);
+            padding: 12px 15px;
+            text-align: left;
+            border: none;
+            outline: none;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .sub-header:hover {
+            background-color: #ebdce2;
+        }
+
+        .sub-header::after {
+            content: '▶';
+            font-size: 0.8rem;
+            color: var(--orange-glow);
+            transition: transform 0.2s ease;
+        }
+
+        .sub-item.active > .sub-header::after {
+            transform: rotate(90deg);
+        }
+
+        .sub-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        /* Inner Body Content */
+        .content-body {
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        @media (min-width: 600px) {
+            .content-body {
+                flex-direction: row;
+                align-items: center;
+            }
+        }
+
+        /* Image */
+        .sadha-img {
+            width: 100%;
+            max-width: 130px;
+            height: 130px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 2px solid var(--accent-color);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin: 0 auto;
+        }
+
+        /* Text details */
+        .sadhana-details {
+            flex: 1;
+        }
+
+        .sadhana-details p {
+            margin: 0 0 10px 0;
+            line-height: 1.5;
+            font-size: 0.95rem;
+        }
+
+        .price-tag {
+            font-size: 1.05rem;
+            font-weight: bold;
+            color: #d9534f;
+            margin-bottom: 12px !important;
+        }
+
+        /* Button */
+        .book-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff4500, #ff8c00);
+            color: white;
+            padding: 8px 18px;
+            text-decoration: none;
+            border-radius: 20px;
+            font-weight: bold;
+            text-align: center;
+            font-size: 0.9rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 8px rgba(255, 69, 0, 0.3);
+        }
+
+        .book-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(255, 69, 0, 0.4);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="heading">
+        <h1>पवित्र साधना एवं दीक्षा केंद्र</h1>
+        <p>॥ जय माँ कामाख्या ॥</p>
+    </div>
+
+    <div class="accordion-container">
+
+        <!-- 1. माँ कामाख्या साधना -->
+        <div class="accordion-item">
+            <button class="accordion-header">1. माँ कामाख्या साधना (Kamakhya Sadhana)</button>
+            <div class="accordion-content">
+                <div class="sub-accordion-container">
+                    
+                    <!-- कामाख्या सब-ऑप्शन 1 -->
+                    <div class="sub-item">
+                        <button class="sub-header">प्रकार ए: कामाख्या तंत्र बाधा निवारण दीक्षा</button>
+                        <div class="sub-content">
+                            <div class="content-body">
+                                <img src="https://images.unsplash.com/photo-1609137144813-2d20dcc7da50?w=400" alt="Kamakhya 1" class="sadha-img">
+                                <div class="sadhana-details">
+                                    <p>यह विशेष दीक्षा जीवन से पुराने से पुराने तंत्र प्रभाव, ऊपरी बाधा और शत्रुओं द्वारा किए गए अभिचार कर्मों को तत्काल काटने के लिए दी जाती है।</p>
+                                    <p class="price-tag">दक्षिणा: ₹5,100/-</p>
+                                    <a href="https://example.com/kamakhya-vaman" target="_blank" class="book-btn">दीक्षा प्राप्त करें</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- कामाख्या सब-ऑप्शन 2 -->
+                    <div class="sub-item">
+                        <button class="sub-header">प्रकार बी: कामाख्या वशीकरण एवं आकर्षण साधना</button>
+                        <div class="sub-content">
+                            <div class="content-body">
+                                <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=400" alt="Kamakhya 2" class="sadha-img">
+                                <div class="sadhana-details">
+                                    <p>व्यापार, समाज अथवा पारिवारिक जीवन में अपनी बात मनवाने, प्रभाव बढ़ाने और तीव्र सम्मोहन शक्ति की जागृति के लिए यह साधना अत्यंत लाभकारी है।</p>
+                                    <p class="price-tag">दक्षिणा: ₹6,100/-</p>
+                                    <a href="https://example.com/kamakhya-akarshan" target="_blank" class="book-btn">साधना बुक करें</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. माँ काली साधना -->
+        <div class="accordion-item">
+            <button class="accordion-header">2. माँ काली साधना (Maa Kali Sadhana)</button>
+            <div class="accordion-content">
+                <div class="sub-accordion-container">
+                    
+                    <!-- काली सब-ऑप्शन 1 -->
+                    <div class="sub-item">
+                        <button class="sub-header">प्रकार ए: दक्षिण काली शत्रु संहार साधना</button>
+                        <div class="sub-content">
+                            <div class="content-body">
+                                <img src="https://images.unsplash.com/photo-1561361060-61090a46220b?w=400" alt="Kali 1" class="sadha-img">
+                                <div class="sadhana-details">
+                                    <p>कोर्ट-कचहरी के मुकदमों, गुप्त शत्रुओं के षड्यंत्रों और जीवन में चल रहे बड़े हादसों को रोकने के लिए दक्षिण काली साधना सर्वश्रेष्ठ मानी जाती है।</p>
+                                    <p class="price-tag">दक्षिणा: ₹7,100/-</p>
+                                    <a href="https://example.com/kali-dakshin" target="_blank" class="book-btn">साधना शुरू करें</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- काली सब-ऑप्शन 2 -->
+                    <div class="sub-item">
+                        <button class="sub-header">प्रकार बी: श्मशान काली तीव्र तंत्र साधना</button>
+                        <div class="sub-content">
+                            <div class="content-body">
+                                <img src="https://images.unsplash.com/photo-1604871000636-074fa5117945?w=400" alt="Kali 2" class="sadha-img">
+                                <div class="sadhana-details">
+                                    <p>यह केवल उच्च कोटि के साधकों के लिए है। आकस्मिक संकटों से रक्षा, आध्यात्मिक उन्नति और कुंडलिनी शक्ति के तीव्र उभार के लिए यह गुप्त साधना की जाती है।</p>
+                                    <p class="price-tag">दक्षिणा: ₹11,000/-</p>
+                                    <a href="https://example.com/kali-shmashan" target="_blank" class="book-btn">अनुमति लें</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. माँ तारा साधना -->
+        <div class="accordion-item">
+            <button class="accordion-header">3. माँ तारा साधना (Maa Tara Sadhana)</button>
+            <div class="accordion-content">
+                <div class="sub-accordion-container">
+                    
+                    <!-- तारा सब-ऑप्शन 1 -->
+                    <div class="sub-item">
+                        <button class="sub-header">प्रकार ए: उग्र तारा धन प्रदायिनी साधना</button>
+                        <div class="sub-content">
+                            <div class="content-body">
+                                <img src="https://images.unsplash.com/photo-1620121692029-d088224ddc74?w=400" alt="Tara 1" class="sadha-img">
+                                <div class="sadhana-details">
+                                    <p>भारी कर्ज, व्यापारिक मंदी और दरिद्रता को जड़ से समाप्त करने के लिए माँ उग्र तारा की लक्ष्मी प्रदायिनी साधना की जाती है।</p>
+                                    <p class="price-tag">दक्षिणा: ₹6,500/-</p>
+                                    <a href="https://example.com/tara-ugra" target="_blank" class="book-btn">साधना बुक करें</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- तारा सब-ऑप्शन 2 -->
+                    <div class="sub-item">
+                        <button class="sub-header">प्रकार बी: नील सरस्वती वाक् सिद्धि साधना</button>
+                        <div class="sub-content">
+                            <div class="content-body">
+                                <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400" alt="Tara 2" class="sadha-img">
+                                <div class="sadhana-details">
+                                    <p>विद्यार्थियों, लेखकों और प्रवचनकर्ताओं के लिए। बुद्धि के विकास, वाक् सिद्धि (वाणी सच होना) और उच्च शिक्षा में सफलता की प्राप्ति हेतु।</p>
+                                    <p class="price-tag">दक्षिणा: ₹5,500/-</p>
+                                    <a href="https://example.com/tara-neel" target="_blank" class="book-btn">सीखना शुरू करें</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. माँ त्रिपुर सुंदरी साधना -->
+        <div class="accordion-item">
+            <button class="accordion-header">4. माँ त्रिपुर सुंदरी (Shri Vidya)</button>
+            <div class="accordion-content">
+                <div class="sub-accordion-container">
+                    
+                    <!-- त्रिपुर सुंदरी सब-ऑप्शन 1 -->
+                    <div class="sub-item">
+                        <button class="sub-header">प्रकार ए: ललिता त्रिपुर सुंदरी गृहस्थ सुख साधना</button>
+                        <div class="sub-content">
+                            <div class="content-body">
+                                <img src="https://images.unsplash.com/photo-1518156677180-95a2893f3e9f?w=400" alt="Tripura 1" class="sadha-img">
+                                <div class="sadhana-details">
+                                    <p>वैवाहिक जीवन की कलह दूर करने, योग्य जीवनसाथी की प्राप्ति और घर में सुख, शांति, ऐश्वर्य का माहौल बनाने के लिए उत्तम है।</p>
+                                    <p class="price-tag">दक्षिणा: ₹11,000/-</p>
+                                    <a href="https://example.com/tripura-lalita" target="_blank" class="book-btn">पंजीकरण करें</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- त्रिपुर सुंदरी सब-ऑप्शन 2 -->
+                    <div class="sub-item">
+                        <button class="sub-header">प्रकार बी: राजराजेश्वरी पूर्ण श्री विद्या दीक्षा</button>
+                        <div class="sub-content">
+                            <div class="content-body">
+                                <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=400" alt="Tripura 2" class="sadha-img">
+                                <div class="sadhana-details">
+                                    <p>यह मोक्ष और भोग दोनों एक साथ देने वाली सर्वोच्च दीक्षा है। जीवन के पूर्ण आध्यात्मिक और भौतिक उत्थान के लिए गुरु सानिध्य में संपन्न होती है।</p>
+                                    <p class="price-tag">दक्षिणा: ₹21,000/-</p>
+                                    <a href="https://example.com/tripura-shri" target="_blank" class="book-btn">दीक्षा हेतु आवेदन</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- 5. माँ बगलामुखी साधना -->
+        <div class="accordion-item">
+            <button class="accordion-header">5. माँ बगलामुखी साधना (Baglamukhi)</button>
+            <div class="accordion-content">
+                <div class="sub-accordion-container">
+                    
+                    <!-- बगलामुखी सब-ऑप्शन 1 -->
+                    <div class="sub-item">
+                        <button class="sub-header">प्रकार ए: ब्रह्मास्त्र विद्या शत्रु स्तंभन अनुष्ठान</button>
+                        <div class="sub-content">
+                            <div class="content-body">
+                                <img src="https://images.unsplash.com/photo-1561361060-61090a46220b?w=400" alt="Bagla 1" class="sadha-img">
+                                <div class="sadhana-details">
+                                    <p>शत्रुओं की बुद्धि का स्तंभन करने, उनकी खराब नियत को रोकने और बड़े मुकदमों तथा विवादों में एकतरफा विजय पाने के लिए अचूक अनुष्ठान।</p>
+                                    <p class="price-tag">दक्षिणा: ₹15,000/-</p>
+                                    <a href="https://example.com/bagla-stambhan" target="_blank" class="book-btn">अनुष्ठान बुक करें</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- बगलामुखी सब-ऑप्शन 2 -->
+                    <div class="sub-item">
+                        <button class="sub-header">प्रकार बी: पीतांबरा तंत्र बाधा काट साधना</button>
+                        <div class="sub-content">
+                            <div class="content-body">
+                                <img src="https://images.unsplash.com/photo-1609137144813-2d20dcc7da50?w=400" alt="Bagla 2" class="sadha-img">
+                                <div class="sadhana-details">
+                                    <p>अगर आपके व्यापार या घर को किसी ने तंत्र बल से बाँध दिया है, तो इस साधना के माध्यम से उस बंधन को हमेशा के लिए खोल दिया जाता है।</p>
+                                    <p class="price-tag">दक्षिणा: ₹9,500/-</p>
+                                    <a href="https://example.com/bagla-kaat" target="_blank" class="book-btn">साधना में जुड़ें</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // --- मुख्य एकॉर्डियन के लिए JavaScript ---
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const currentItem = header.parentElement;
+                const content = currentItem.querySelector('.accordion-content');
+                
+                // पहले से खुले किसी भी मुख्य एकॉर्डियन को बंद करना
+                document.querySelectorAll('.accordion-item').forEach(item => {
+                    if (item !== currentItem && item.classList.contains('active')) {
+                        item.classList.remove('active');
+                        item.querySelector('.accordion-content').style.maxHeight = null;
+                        
+                        // उसके अंदर खुले सब-ऑप्शंस को भी रिसेट करना
+                        item.querySelectorAll('.sub-item').forEach(subItem => {
+                            subItem.classList.remove('active');
+                            subItem.querySelector('.sub-content').style.maxHeight = null;
+                        });
+                    }
+                });
+
+                // एक्टिव क्लास टॉगल करें
+                currentItem.classList.toggle('active');
+
+                if (currentItem.classList.contains('active')) {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                } else {
+                    content.style.maxHeight = null;
+                }
+            });
+        });
+
+        // --- अंदर वाले (सब-ऑप्शन) एकॉर्डियन के लिए JavaScript ---
+        document.querySelectorAll('.sub-header').forEach(subHeader => {
+            subHeader.addEventListener('click', (e) => {
+                e.stopPropagation(); // मुख्य एकॉर्डियन को बंद होने से रोकना
+                
+                const currentSubItem = subHeader.parentElement;
+                const subContent = currentSubItem.querySelector('.sub-content');
+                const mainContent = currentSubItem.closest('.accordion-content');
+                
+                // एक ही मुख्य सेक्शन के अंदर दूसरे सब-ऑप्शन को बंद करना
+                const sisterSubItems = currentSubItem.parentElement.querySelectorAll('.sub-item');
+                sisterSubItems.forEach(item => {
+                    if (item !== currentSubItem && item.classList.contains('active')) {
+                        item.classList.remove('active');
+                        item.querySelector('.sub-content').style.maxHeight = null;
+                    }
+                });
+
+                // करंट सब-ऑप्शन टॉगल करें
+                currentSubItem.classList.toggle('active');
+
+                if (currentSubItem.classList.contains('active')) {
+                    subContent.style.maxHeight = subContent.scrollHeight + "px";
+                    // जब अंदर का एकॉर्डियन खुले, तो बाहर वाले मुख्य एकॉर्डियन की हाइट बढ़ाना ज़रूरी है
+                    mainContent.style.maxHeight = (mainContent.scrollHeight + subContent.scrollHeight) + "px";
+                } else {
+                    subContent.style.maxHeight = null;
+                    // बाहर वाले की हाइट वापस सेट करना
+                    setTimeout(() => {
+                        mainContent.style.maxHeight = mainContent.scrollHeight + "px";
+                    }, 300);
+                }
+            });
+        });
     </script>
     </body>
 </html>
