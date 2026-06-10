@@ -737,6 +737,19 @@ function showDailyNotification() {
 
   .link-btn:hover { background: #fff; box-shadow: 0 0 10px #ffd700; }
 </style>
+    <div class="container">
+        <h2>सेवाओं को देखें🚀</h2>
+
+        <!-- The Colorful Dropdown Menu -->
+        <select class="colorful-select" id="linkDropdown" onchange="openNewLink()">
+            <option value="" disabled selected> कोई विकल्प चुनें...</option>
+            <option value="jyitishi.html">🔮 ज्योतिष सेवाएँ</option>
+            <option value="poojapath.html">🛕 पूजा-पाठ व अनुष्ठान</option>
+            <option value="ratnyantra.html">💎 रत्न एवं यंत्र सेवाएँ</option>
+            <option value="tantra-mantra.html">🕉️ तंत्र-मंत्र व साधना</option>
+            <option value="vastupara.html">🧭 वास्तु व परामर्श</option>
+        </select>
+    </div>
 
 <div class="astro-container">
   <h2>✨ Cosmic Profile Links ✨</h2>
@@ -793,97 +806,105 @@ function showDailyNotification() {
   </table>
 </div>
 
-
-<div class="container">
-     <div class="subtitle">
-        धार्मिक एवं ज्योतिष संस्थान सामान्यतः लोगों की आध्यात्मिक, पारिवारिक, सामाजिक और धार्मिक समस्याओं के समाधान हेतु विभिन्न सेवाएँ प्रदान करते हैं। नीचे हमारी प्रमुख सेवाओं का विवरण दिया गया है:
-    </div>
-
-    <!-- मुख्य कैलेंडर ग्रिड -->
-    <div class="calendar-grid">
-
-        <!-- कॉलम 1: ज्योतिष सेवाएँ -->
-        <div class="calendar-day day-jyotish">
-            <div class="day-header">🔮 ज्योतिष सेवाएँ</div>
-            <div class="events-container">
-                <div class="event">• जन्म कुंडली निर्माण एवं विश्लेषण</div>
-                <div class="event">• विवाह मिलान (गुण मिलान)</div>
-                <div class="event">• मांगलिक दोष जांच</div>
-                <div class="event">• ग्रह दोष एवं शांति उपाय</div>
-                <div class="event">• शनि, राहु, केतु दोष समाधान</div>
-                <div class="event">• कालसर्प दोष पूजा एवं उपाय</div>
-                <div class="event">• पितृ दोष निवारण</div>
-                <div class="event">• नाड़ी दोष समाधान</div>
-                <div class="event">• प्रेम विवाह एवं दांपत्य जीवन परामर्श</div>
-                <div class="event">• करियर, नौकरी एवं व्यवसाय सलाह</div>
-                <div class="event">• विदेश यात्रा योग जांच</div>
-                <div class="event">• शिक्षा एवं परीक्षा सफलता मार्गदर्शन</div>
-                <div class="event">• आर्थिक उन्नति एवं धन प्राप्ति उपाय</div>
-            </div>
-        </div>
-
-        <!-- कॉलम 2: तंत्र-मंत्र सेवाएँ -->
-        <div class="calendar-day day-tantra">
-            <div class="day-header">🕉️ तंत्र-मंत्र व साधना</div>
-            <div class="events-container">
-                <div class="event">• माँ कामाख्या साधना</div>
-                <div class="event">• दशमहाविद्या साधना</div>
-                <div class="event">• बगलामुखी साधना</div>
-                <div class="event">• तंत्र बाधा निवारण</div>
-                <div class="event">• नकारात्मक ऊर्जा एवं नजर दोष हटाना</div>
-                <div class="event">• शत्रु बाधा निवारण</div>
-                <div class="event">• वशीकरण संबंधी धार्मिक उपाय</div>
-                <div class="event">• गृह क्लेश एवं पारिवारिक अशांति समाधान</div>
-            </div>
-        </div>
-
-        <!-- कॉलम 3: पूजा-पाठ -->
-        <div class="calendar-day day-puja">
-            <div class="day-header">🛕 पूजा-पाठ व अनुष्ठान</div>
-            <div class="events-container">
-                <div class="event">• महामृत्युंजय जाप</div>
-                <div class="event">• नवग्रह शांति पूजा</div>
-                <div class="event">• रुद्राभिषेक</div>
-                <div class="event">• दुर्गा सप्तशती पाठ</div>
-                <div class="event">• सत्यनारायण कथा</div>
-                <div class="event">• हवन एवं यज्ञ</div>
-                <div class="event">• ग्रह शांति अनुष्ठान</div>
-                <div class="event">• विवाह, गृह प्रवेश एवं नामकरण पूजा</div>
-                <div class="event">• संतान प्राप्ति पूजा</div>
-                <div class="event">• व्यापार वृद्धि अनुष्ठान</div>
-            </div>
-        </div>
-
-        <!-- कॉलम 4: वास्तु परामर्श -->
-        <div class="calendar-day day-vastu">
-            <div class="day-header">🧭 वास्तु व परामर्श</div>
-            <div class="events-container">
-                <div class="event">• घर एवं दुकान का वास्तु निरीक्षण</div>
-                <div class="event">• फैक्ट्री एवं ऑफिस वास्तु सलाह</div>
-                <div class="event">• मंदिर स्थापना एवं दिशा मार्गदर्शन</div>
-                <div class="event">• वास्तु दोष निवारण उपाय</div>
-                <div class="event">• धार्मिक यंत्र एवं रत्न सुझाव</div>
-            </div>
-        </div>
-
-        <!-- कॉलम 5: रत्न एवं यंत्र -->
-        <div class="calendar-day day-ratna">
-            <div class="day-header">💎 रत्न एवं यंत्र सेवाएँ</div>
-            <div class="events-container">
-                <div class="event">• कुंडली अनुसार रत्न सलाह</div>
-                <div class="event">• रुद्राक्ष परामर्श</div>
-                <div class="event">• सिद्ध यंत्र उपलब्ध कराना</div>
-                <div class="event">• ग्रह अनुसार धारण विधि बताना</div>
-            </div>
-        </div>
-
-    </div>
-
- </div>
-
+<style>
+        /* Modern, colorful gradient background */
  
-    <style> 
-.slider-container {
+        /* Glassmorphism card container */
+        .container {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+            color: #ffffff;
+        }
+
+        h2 {
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-size: 24px;
+            letter-spacing: 1px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+        }
+
+        /* Vibrant custom styled dropdown */
+        .colorful-select {
+            appearance: none; /* Removes default browser styling */
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            
+            background: linear-gradient(45deg, #ff416c, #ff4b2b);
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            width: 280px;
+            box-shadow: 0 4px 15px rgba(255, 75, 43, 0.4);
+            transition: all 0.3s ease;
+            text-align: center;
+            outline: none;
+        }
+
+        /* Hover effect for the dropdown button */
+        .colorful-select:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 75, 43, 0.6);
+            background: linear-gradient(45deg, #ff4b2b, #ff416c);
+        }
+
+        /* Dropdown options list container styling */
+        .colorful-select option {
+            background-color: #2b1055;
+            color: #ffffff;
+            font-weight: normal;
+            padding: 10px;
+        }
+    </style>
+    <script>
+        function openNewLink() {
+            const dropdown = document.getElementById("linkDropdown");
+            const selectedValue = dropdown.value;
+
+            if (selectedValue) {
+                // Opens link in a new tab
+                window.open(selectedValue, '_blank');
+                
+                // Resets the dropdown back to the "Select an Option..." title
+                dropdown.selectedIndex = 0;
+            }
+        }
+    </script>
+  <script>
+    if ('serviceWorker' in navigator && 'PushManager' in window) {
+  navigator.serviceWorker.register('/sw.js')
+    .then((reg) => {
+      console.log('Service Worker Registered');
+      
+      // Notification ki permission maange
+      Notification.requestPermission().then((permission) => {
+        if (permission === 'granted') {
+          console.log('Notification permission granted.');
+        }
+      });
+    });
+}
+
+
+    if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+            .then(reg => console.log('Service Worker Registered!', reg))
+            .catch(err => console.error('Service Worker Registration Failed!', err));
+    });
+}
+ </script>
+ <style>
+    .slider-container {
     position: relative;
     max-width: 450px;
     margin: auto;
@@ -921,84 +942,8 @@ h1 {
 
 h1:hover { background: rgba(0,0,0,0.8); 
 }
-</style>
-<button id="installbtn" style="display: none; padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer; margin-left: 3cm;">Install App</button>
- <script>
-    let deferredPrompt;
-const installBtn = document.getElementById('installBtn');
 
-// 1. Browser check karega ki manifest valid hai ya nahi
-window.addEventListener('beforeinstallprompt', (e) => {
-    // Browser ka default popup rokein taaki hum apna custom tarika use kar sakein
-    e.preventDefault();
-    // Event ko save karlein baad mein use karne ke liye
-    deferredPrompt = e;
-    
-    // Ab user ko "Download App" ka button dikha dein
-    installBtn.style.display = 'block';
-    
-    // AGAR AAPKO BILKUL FORCE KARNA HAI: Toh site khulte hi bina click ke popup trigger karne ki koshish karein
-    // Note: Yeh tabhi chalega agar user ne pehle kabhi site visit ki ho ya thoda interact kiya ho
-    setTimeout(() => {
-        triggerPrompt();
-    }, 1000); // Site khulne ke 1 second baad
-});
-
-// 2. Button par click hone par popup dikhane ka function
-installBtn.addEventListener('click', () => {
-    triggerPrompt();
-});
-
-function triggerPrompt() {
-    if (deferredPrompt) {
-        // Asli browser popup dikhayein
-        deferredPrompt.prompt();
-        
-        // User ka choice check karein (ki usne install kiya ya cancel)
-        deferredPrompt.userChoice.then((choiceResult) => {
-            if (choiceResult.outcome === 'accepted') {
-                console.log('User ne app install kar li! 🎉');
-            } else {
-                console.log('User ne cancel kar diya. 😢');
-            }
-            // Prompt ko clear kardein, yeh ek hi baar use ho sakta hai
-            deferredPrompt = null;
-            installBtn.style.display = 'none';
-        });
-    }
-}
-
-// 3. Agar app pehle se installed hai, toh button chupayein
-window.addEventListener('appinstalled', () => {
-    console.log('PWA successfully install ho chuka hai.');
-    installBtn.style.display = 'none';
-});
-
- </script>
- <script>
-    if ('serviceWorker' in navigator && 'PushManager' in window) {
-  navigator.serviceWorker.register('/sw.js')
-    .then((reg) => {
-      console.log('Service Worker Registered');
-      
-      // Notification ki permission maange
-      Notification.requestPermission().then((permission) => {
-        if (permission === 'granted') {
-          console.log('Notification permission granted.');
-        }
-      });
-    });
-}
-
-
-    if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js')
-            .then(reg => console.log('Service Worker Registered!', reg))
-            .catch(err => console.error('Service Worker Registration Failed!', err));
-    });
-}
- </script>
+ </style>
  <script> 
  let currentIndex = 0;
 const slides = document.querySelectorAll('.slide');
