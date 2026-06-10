@@ -439,30 +439,90 @@ function showDailyNotification() {
           </div>
 
     </div>
-    <!--facebook page-->
-        <div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v18.0"></script>
- <iframe 
-    src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fprofile.php%3Fid%3D61590197677361&tabs=timeline&width=400&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false" 
-    width="400" 
-    height="400" 
-    style="border:none; overflow:hidden;" 
-    scrolling="no" 
-    frameborder="0" 
-    allowfullscreen="true" 
-    allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
-</iframe>
+    <style>
+.shakti-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:20px;
+  padding:20px;
+  max-width:1200px;
+  margin:auto;
+}
 
-         <style>
-            .card-footer{
-                background-color: #388e3c;
-                color: white;
-            }
-            img{
-                height: 150px;
-            }
-         </style>
-        <hr>
+.pith-card{
+  background:#fff;
+  border-radius:12px;
+  overflow:hidden;
+  box-shadow:0 6px 12px rgba(0,0,0,0.15);
+  transition:.3s;
+}
+
+.pith-card:hover{
+  transform:translateY(-5px);
+}
+
+.pith-card img{
+  width:100%;
+  height:220px;
+  object-fit:cover;
+}
+
+.pith-content{
+  padding:15px;
+  text-align:center;
+}
+
+.pith-content h3{
+  color:#8b0000;
+  margin-bottom:10px;
+}
+
+.footer-benefits{
+  margin:40px 20px;
+  padding:30px;
+  background:#fff5f5;
+  border:2px solid #d32f2f;
+  border-radius:12px;
+  text-align:center;
+}
+
+.footer-benefits h2{
+  color:#8b0000;
+}
+
+.benefits-list{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:15px;
+  list-style:none;
+  padding:0;
+}
+
+.benefits-list li{
+  background:white;
+  padding:15px;
+  border-radius:10px;
+  box-shadow:0 2px 6px rgba(0,0,0,0.1);
+  flex:1;
+  min-width:220px;
+}
+</style>
+<hr>
+    <div class="container">
+        <h2>सेवाओं को देखें🚀</h2>
+
+        <!-- The Colorful Dropdown Menu -->
+        <select class="colorful-select" id="linkDropdown" onchange="openNewLink()">
+            <option value="" disabled selected> कोई विकल्प चुनें...</option>
+            <option value="jyitishi.html">🔮 ज्योतिष सेवाएँ</option>
+            <option value="poojapath.html">🛕 पूजा-पाठ व अनुष्ठान</option>
+            <option value="ratnyantra.html">💎 रत्न एवं यंत्र सेवाएँ</option>
+            <option value="tantra-mantra.html">🕉️ तंत्र-मंत्र व साधना</option>
+            <option value="vastupara.html">🧭 वास्तु व परामर्श</option>
+        </select>
+    </div>
+<hr>
                    <div class="slider-container">
     <div class="slides">
                <div class="slide active"><img src="image/IMG-20260425-WA0012.jpg" alt=""></div>
@@ -491,7 +551,159 @@ function showDailyNotification() {
     <h1 class="next" onclick="changeSlide(1)">&#10095;</h1>
 </div>
 <hr>
-<style>
+
+<div class="shakti-grid">
+
+  <div class="pith-card">
+    <img src="https://images.unsplash.com/photo-1605649487212-47bdab064df7?w=800" alt="कामाख्या शक्तिपीठ">
+    <div class="pith-content">
+      <h3>कामाख्या शक्तिपीठ</h3>
+      <p>
+        असम के गुवाहाटी में स्थित यह शक्तिपीठ माता सती की
+        योनि शक्ति का प्रतीक माना जाता है। यह तंत्र साधना का
+        प्रमुख केंद्र है।
+      </p>
+    </div>
+  </div>
+
+  <div class="pith-card">
+    <img src="https://images.unsplash.com/photo-1548013146-72479768bada?w=800" alt="ज्वालामुखी शक्तिपीठ">
+    <div class="pith-content">
+      <h3>ज्वालामुखी शक्तिपीठ</h3>
+      <p>
+        हिमाचल प्रदेश में स्थित यह शक्तिपीठ अपनी
+        अखंड ज्योति के लिए प्रसिद्ध है। श्रद्धालु यहाँ
+        माता के दर्शन के लिए दूर-दूर से आते हैं।
+      </p>
+    </div>
+  </div>
+<div class="astro-container">
+  <h2>✨ Cosmic Profile Links ✨</h2>
+  <table class="astro-table">
+    <thead>
+      <tr>
+        <th>Platform</th>
+        <th>Profile Name</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" class="platform-icon"> WhatsApp</td>
+        <td>
+            <img src="image/IMG_20260610_114213.jpg" class="profile-avator">
+            ravinder shastri</td>
+        <td><a href="https://wa.me/9813132098" class="link-btn">Message Me</a></td>
+      </tr>
+      <tr>
+        <td><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" class="platform-icon"> Facebook</td>
+        <td><img src="image/IMG_20260610_114227.jpg" class="profile-avator">आचार्य पं रविंदर शास्त्री</td>
+        <td><a href="https://www.facebook.com/David78100/" class="link-btn">Visit Profile</a></td>
+      </tr>
+            <tr>
+        <td><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" class="platform-icon"> FB</td>
+        <td>
+            <img src="image/IMG_20260610_114213.jpg" class="profile-avator">माँ कामाख्या ज्योतिष पीठ</td>
+        <td><a href="https://www.facebook.com/profile.php?id=61590197677361" class="link-btn">Visit Profile</a></td>
+      </tr>
+
+      <tr>
+        <td><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" class="platform-icon"> Instagram</td>
+        <td>
+            <img src="image/IMG_20260610_114201.jpg" class="profile-avator">shastri_officially</td>
+        <td><a href="https://www.instagram.com/shastri_officially?igsh=NnBrYjJmbm85Zms1" class="link-btn">Follow Us</a></td>
+      </tr>
+      <tr>
+        <td><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" class="platform-icon"> YouTube</td>
+        <td><img src="image/IMG_20260610_115002.jpg" class="profile-avator">ॐ  VASTU & JYOTISH</td>
+        <td><a href="https://youtube.com/@omvastujyotish?si=UlQ-s4nJIuzfUfI4" class="link-btn">Watch Videos</a></td>
+      </tr>
+      <tr>
+        <td><img src="https://cdn-icons-png.flaticon.com/512/455/455705.png" class="platform-icon"> Telephone</td>
+        <td>रवि शास्त्री</td>
+        <td><a href="tel:+919813132098" class="link-btn">Call Now</a></td>
+        <tr> 
+        <td><img src="https://cdn-icons-png.flaticon.com/512/2991/2991148.png" class="platform-icon"> Google</td>
+        <td><img src="image/IMG-20260603-WA0002.jpg" class="profile-avator">acharya ravinder shastri</td>
+        <td><a href="https://www.google.com/search?q=acharya+ravinder+shastri&oq=&gs_lcrp=EgZjaHJvbWUqDAgEECMYJxjqAhiLBDIGCAAQRRg6MgcIARBFGLEBMgkIAhAFGEIYwwMyDAgDECMYJxjqAhiLBDIMCAQQIxgnGOoCGIsEMgwIBRAjGCcY6gIYiwQyDAgGECMYJxjqAhiLBDIMCAcQIxgnGOoCGIsEMgwICBAjGCcY6gIYiwQyDAgJECMYJxjqAhiLBDIMCAoQIxgnGOoCGIsEMgwICxAjGCcY6gIYiwQyDAgMECMYJxjqAhiLBDISCA0QIxgnGOoCGIsEGPAFGJ4GMgwIDhAjGCcY6gIYiwTSAQYtMWowajSoAg6wAgHxBT3tg42AFU3Q&client=ms-android-oppo-terr1-rso2&sourceid=chrome-mobile&ie=UTF-8#ebo=0" class="link-btn">Visit </a></td>
+
+      </tr>
+      <tr>
+        <td><img src="image/website.png" class="platform-icon">Site-1</td>
+        <td><img src="image/IMG-20260411-WA0036.jpg" class="profile-avator">acharya ravinder shastri</td>
+        <td><a href="https://deepakag285-stack.github.io/pandit/" class="link-btn">open</a></td>
+      </tr>
+             <tr>
+              <td><img src="image/website.png" class="platform-icon">Site-2</td>
+        <td><img src="image/1000094347.jpg" class="profile-avator">माँ कामाख्या ज्योतिष पीठ</td>
+        <td><a href="https://deepakag285-stack.github.io/makamakhya-temple/" class="link-btn">open</a></td>
+      </tr>
+      <tr>
+        <td><img src="image/android.png" class="platform-icon">App-1</td>
+        <td><img src="image/IMG-20260606-WA0006.jpg" class="profile-avator">acharya ravinder shastri</td>
+        <td><a href="https://drive.google.com/file/d/1mK8Ccb9sMq2mYRTzCh5eTA8dBHEHyDsW/view" class="link-btn">download</a></td>
+      </tr>
+            <tr>
+              <td><img src="image/android.png" class="platform-icon">App-2</td>
+        <td><img src="image/IMG-20260418-WA0001(1).jpg" class="profile-avator">माँ कामाख्या ज्योतिष पीठ</td>
+        <td><a href="https://drive.google.com/file/d/10VkuJXtjv95-aCxGV4urzDkw0tsDcazI/view?usp=sharing" class="link-btn">download</a></td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>
+
+  <div class="pith-card">
+    <img src="https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=800" alt="आध्यात्मिक शक्ति">
+    <div class="pith-content">
+      <h3>आध्यात्मिक शक्ति</h3>
+      <p>
+        शक्तिपीठों का दर्शन मन में श्रद्धा, विश्वास,
+        सकारात्मक ऊर्जा तथा आत्मिक शांति प्रदान करता है।
+      </p>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer-benefits">
+  <h2>शक्तिपीठ दर्शन के लाभ</h2>
+
+  <ul class="benefits-list">
+    <li><strong>🕉 मानसिक शांति:</strong> मन को सुकून और संतोष मिलता है।</li>
+
+    <li><strong>✨ सकारात्मक ऊर्जा:</strong> जीवन में उत्साह और आत्मविश्वास बढ़ता है।</li>
+
+    <li><strong>💪 दृढ़ संकल्प:</strong> कठिनाइयों से लड़ने की शक्ति प्राप्त होती है।</li>
+
+    <li><strong>🙏 आध्यात्मिक उन्नति:</strong> भक्ति और साधना में प्रगति होती है।</li>
+  </ul>
+</div>
+    <!--facebook page 
+        <div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v18.0"></script>
+ <iframe 
+    src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fprofile.php%3Fid%3D61590197677361&tabs=timeline&width=400&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false" 
+    width="400" 
+    height="400" 
+    style="border:none; overflow:hidden;" 
+    scrolling="no" 
+    frameborder="0" 
+    allowfullscreen="true" 
+    allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+</iframe>
+-->
+         <style>
+            .card-footer{
+                background-color: #388e3c;
+                color: white;
+            }
+            img{
+                height: 150px;
+            }
+         </style>
+        <hr>
+ <style>
     body{
         background-color: red;
         margin-top:0.3cm;
@@ -542,7 +754,7 @@ function showDailyNotification() {
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            background: #ffffff;
+            background-color: green;
             padding: 30px;
             border-radius: 16px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.08);
@@ -737,102 +949,14 @@ function showDailyNotification() {
 
   .link-btn:hover { background: #fff; box-shadow: 0 0 10px #ffd700; }
 </style>
-    <div class="container">
-        <h2>सेवाओं को देखें🚀</h2>
-
-        <!-- The Colorful Dropdown Menu -->
-        <select class="colorful-select" id="linkDropdown" onchange="openNewLink()">
-            <option value="" disabled selected> कोई विकल्प चुनें...</option>
-            <option value="jyitishi.html">🔮 ज्योतिष सेवाएँ</option>
-            <option value="poojapath.html">🛕 पूजा-पाठ व अनुष्ठान</option>
-            <option value="ratnyantra.html">💎 रत्न एवं यंत्र सेवाएँ</option>
-            <option value="tantra-mantra.html">🕉️ तंत्र-मंत्र व साधना</option>
-            <option value="vastupara.html">🧭 वास्तु व परामर्श</option>
-        </select>
-    </div>
-
-<div class="astro-container">
-  <h2>✨ Cosmic Profile Links ✨</h2>
-  <table class="astro-table">
-    <thead>
-      <tr>
-        <th>Platform</th>
-        <th>Profile Name</th>
-        <th>Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" class="platform-icon"> WhatsApp</td>
-        <td>
-            <img src="image/IMG_20260610_114213.jpg" class="profile-avator">
-            ravinder shastri</td>
-        <td><a href="https://wa.me/9813132098" class="link-btn">Message Me</a></td>
-      </tr>
-      <tr>
-        <td><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" class="platform-icon"> Facebook</td>
-        <td><img src="image/IMG_20260610_114227.jpg" class="profile-avator">आचार्य पं रविंदर शास्त्री</td>
-        <td><a href="https://www.facebook.com/David78100/" class="link-btn">Visit Profile</a></td>
-      </tr>
-            <tr>
-        <td><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" class="platform-icon"> FB</td>
-        <td>
-            <img src="image/IMG_20260610_114213.jpg" class="profile-avator">माँ कामाख्या ज्योतिष पीठ</td>
-        <td><a href="https://www.facebook.com/profile.php?id=61590197677361" class="link-btn">Visit Profile</a></td>
-      </tr>
-
-      <tr>
-        <td><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" class="platform-icon"> Instagram</td>
-        <td>
-            <img src="image/IMG_20260610_114201.jpg" class="profile-avator">shastri_officially</td>
-        <td><a href="https://www.instagram.com/shastri_officially?igsh=NnBrYjJmbm85Zms1" class="link-btn">Follow Us</a></td>
-      </tr>
-      <tr>
-        <td><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" class="platform-icon"> YouTube</td>
-        <td><img src="image/IMG_20260610_115002.jpg" class="profile-avator">ॐ  VASTU & JYOTISH</td>
-        <td><a href="https://youtube.com/@omvastujyotish?si=UlQ-s4nJIuzfUfI4" class="link-btn">Watch Videos</a></td>
-      </tr>
-      <tr>
-        <td><img src="https://cdn-icons-png.flaticon.com/512/455/455705.png" class="platform-icon"> Telephone</td>
-        <td>रवि शास्त्री</td>
-        <td><a href="tel:+919813132098" class="link-btn">Call Now</a></td>
-        <tr> 
-        <td><img src="https://cdn-icons-png.flaticon.com/512/2991/2991148.png" class="platform-icon"> Google</td>
-        <td><img src="image/IMG-20260603-WA0002.jpg" class="profile-avator">acharya ravinder shastri</td>
-        <td><a href="https://www.google.com/search?q=acharya+ravinder+shastri&oq=&gs_lcrp=EgZjaHJvbWUqDAgEECMYJxjqAhiLBDIGCAAQRRg6MgcIARBFGLEBMgkIAhAFGEIYwwMyDAgDECMYJxjqAhiLBDIMCAQQIxgnGOoCGIsEMgwIBRAjGCcY6gIYiwQyDAgGECMYJxjqAhiLBDIMCAcQIxgnGOoCGIsEMgwICBAjGCcY6gIYiwQyDAgJECMYJxjqAhiLBDIMCAoQIxgnGOoCGIsEMgwICxAjGCcY6gIYiwQyDAgMECMYJxjqAhiLBDISCA0QIxgnGOoCGIsEGPAFGJ4GMgwIDhAjGCcY6gIYiwTSAQYtMWowajSoAg6wAgHxBT3tg42AFU3Q&client=ms-android-oppo-terr1-rso2&sourceid=chrome-mobile&ie=UTF-8#ebo=0" class="link-btn">Visit </a></td>
-
-      </tr>
-      <tr>
-        <td><img src="image/website.png" class="platform-icon">Site-1</td>
-        <td><img src="image/IMG-20260411-WA0036.jpg" class="profile-avator">acharya ravinder shastri</td>
-        <td><a href="https://deepakag285-stack.github.io/pandit/" class="link-btn">open</a></td>
-      </tr>
-             <tr>
-              <td><img src="image/website.png" class="platform-icon">Site-2</td>
-        <td><img src="image/1000094347.jpg" class="profile-avator">माँ कामाख्या ज्योतिष पीठ</td>
-        <td><a href="https://deepakag285-stack.github.io/makamakhya-temple/" class="link-btn">open</a></td>
-      </tr>
-      <tr>
-        <td><img src="image/android.png" class="platform-icon">App-1</td>
-        <td><img src="image/IMG-20260606-WA0006.jpg" class="profile-avator">acharya ravinder shastri</td>
-        <td><a href="https://drive.google.com/file/d/1mK8Ccb9sMq2mYRTzCh5eTA8dBHEHyDsW/view" class="link-btn">download</a></td>
-      </tr>
-            <tr>
-              <td><img src="image/android.png" class="platform-icon">App-2</td>
-        <td><img src="image/IMG-20260418-WA0001(1).jpg" class="profile-avator">माँ कामाख्या ज्योतिष पीठ</td>
-        <td><a href="https://drive.google.com/file/d/10VkuJXtjv95-aCxGV4urzDkw0tsDcazI/view?usp=sharing" class="link-btn">download</a></td>
-      </tr>
-
-    </tbody>
-  </table>
-</div>
-
+ 
+ 
 <style>
         /* Modern, colorful gradient background */
  
         /* Glassmorphism card container */
         .container {
-            background: rgba(255, 255, 255, 0.15);
+            background-color:green;
             backdrop-filter: blur(10px);
             border-radius: 15px;
             padding: 40px;
