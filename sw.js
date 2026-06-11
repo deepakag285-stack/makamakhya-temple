@@ -14,14 +14,8 @@ self.addEventListener('fetch', (event) => {
     // अभी हम सीधे इंटरनेट से फाइलें लोड होने दे रहे हैं
     event.respondWith(fetch(event.request));
 });
-self.addEventListener('push', (event) => {
-  const options = {
-    body: event.data ? event.data.text() : 'Naya update aaya hai!',
-    icon: 'image/IMG-20260418-WA0001(1).jpg"',
-    badge: 'image/IMG-20260418-WA0001(1).jpg"'
-  };
-
-  event.waitUntil(
-    self.registration.showNotification('PWA Notification', options)
-  );
+ self.registration.showNotification("माँ कामाख्या", {
+  body: "आप तंत्र-विद्या, वास्तु-दोष, ग्रह-दोष या किसी भी विषय पर अधिक जानकारी प्राप्त कर सकते हैं।",
+  icon: "image/IMG-20260418-WA0001(1).jpg",
+  badge: "image/IMG-20260418-WA0001(1).jpg"
 });

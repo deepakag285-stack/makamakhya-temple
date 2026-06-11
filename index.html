@@ -1089,29 +1089,24 @@ h1:hover { background: rgba(0,0,0,0.8);
 }
 
  </style>
- <script> 
- let currentIndex = 0;
-const slides = document.querySelectorAll('.slide');
-
-function changeSlide(direction) {
-    // 1. Remove 'active' class from current slide
-    slides[currentIndex].classList.remove('active');
-
-    // 2. Update the index
-    currentIndex += direction;
-
-    // 3. Handle Looping (if at end, go to start; if at start, go to end)
-    if (currentIndex >= slides.length) {
-        currentIndex = 0;
-    } else if (currentIndex < 0) {
-        currentIndex = slides.length - 1;
+ <script>
+    if ("Notification" in window) {
+  Notification.requestPermission().then((permission) => {
+    if (permission === "granted") {
+      console.log("Notification permission granted!");
     }
-
-    // 4. Add 'active' class to the new slide
-    slides[currentIndex].classList.add('active');
+  });
 }
-// Optional: Auto-play every 5 seconds
-setInterval(() => changeSlide(1), 2000);
+window.addEventListener('load', () => {
+  if (Notification.permission === 'granted') {
+    navigator.serviceWorker.ready.then((registration) => {
+      registration.showNotification('"माँ कामाख्या', {
+        body: 'आप तंत्र-विद्या, वास्तु-दोष, ग्रह-दोष या किसी भी विषय पर अधिक जानकारी प्राप्त कर सकते हैं।.',
+        icon: 'image/IMG-20260418-WA0001(1).jpg'
+      });
+    });
+  }
+});
 </script>
  </body>
  </html>
