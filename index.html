@@ -1089,24 +1089,48 @@ h1:hover { background: rgba(0,0,0,0.8);
 }
 
  </style>
- <script>
-    if ("Notification" in window) {
-  Notification.requestPermission().then((permission) => {
-    if (permission === "granted") {
-      console.log("Notification permission granted!");
+  <script>
+    // 1. Service Worker Register karein
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js');
     }
-  });
-}
-window.addEventListener('load', () => {
-  if (Notification.permission === 'granted') {
-    navigator.serviceWorker.ready.then((registration) => {
-      registration.showNotification('"माँ कामाख्या', {
-        body: 'आप तंत्र-विद्या, वास्तु-दोष, ग्रह-दोष या किसी भी विषय पर अधिक जानकारी प्राप्त कर सकते हैं।.',
-        icon: 'image/IMG-20260418-WA0001(1).jpg'
-      });
-    });
-  }
-});
-</script>
- </body>
+
+    // 2. Notification Permission lein
+    Notification.requestPermission();
+
+    // 3. Polling: Har 30 seconds mein data.json check karein
+    let lastKnownTitle = "";
+
+    async function checkForUpdates() {
+      try {
+        const response = await fetch('data.json');
+        const data = await response.json();
+
+        // Agar purane title se naya title alag hai, toh notify karein
+        if (data.title !== lastKnownTitle) {
+          lastKnownTitle = data.title;
+          showNotif(data.title, data.body);
+        }
+      } catch (err) {
+        console.log("Update check fail:", err);
+      }
+    }
+
+    function showNotif(title, body) {
+      if (Notification.permission === 'granted') {
+        navigator.serviceWorker.ready.then((reg) => {
+          reg.showNotification(title, { body: body, icon: 'image/IMG-20260418-WA0001(1).jpg' });
+        });
+      }
+    }
+
+    // Har 30 seconds mein check karein
+    setInterval(checkForUpdates, 30000);
+    
+    // Page load hote hi pehli baar check karein
+    checkForUpdates();
+  </script>
+  </body>
+
+  </body>
  </html>

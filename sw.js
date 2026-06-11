@@ -1,3 +1,4 @@
+
 self.addEventListener('install', (event) => {
     console.log('Service Worker: Installing...');
     // ब्राउज़र को तुरंत एक्टिवेट करने के लिए मजबूर करना
@@ -14,8 +15,11 @@ self.addEventListener('fetch', (event) => {
     // अभी हम सीधे इंटरनेट से फाइलें लोड होने दे रहे हैं
     event.respondWith(fetch(event.request));
 });
- self.registration.showNotification("माँ कामाख्या", {
-  body: "आप तंत्र-विद्या, वास्तु-दोष, ग्रह-दोष या किसी भी विषय पर अधिक जानकारी प्राप्त कर सकते हैं।",
-  icon: "image/IMG-20260418-WA0001(1).jpg",
-  badge: "image/IMG-20260418-WA0001(1).jpg"
+self.addEventListener('install', (e) => self.skipWaiting());
+
+self.addEventListener('notificationclick', (event) => {
+  event.notification.close();
+  event.waitUntil(clients.openWindow('https://deepakag285-stack.github.io/makamakhya-temple/'));
 });
+
+ 
