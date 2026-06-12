@@ -15,11 +15,9 @@ self.addEventListener('fetch', (event) => {
     // अभी हम सीधे इंटरनेट से फाइलें लोड होने दे रहे हैं
     event.respondWith(fetch(event.request));
 });
-self.addEventListener('install', (e) => self.skipWaiting());
-
-self.addEventListener('notificationclick', (event) => {
-  event.notification.close();
-  event.waitUntil(clients.openWindow('https://deepakag285-stack.github.io/makamakhya-temple/'));
+  // service-worker.js file mein
+self.registration.showNotification("Welcome!", {
+  body: "Humara PWA khul gaya hai!",
+  icon: "/icon-192.png",
+  badge: "/badge.png"
 });
-
- 
