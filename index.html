@@ -517,31 +517,85 @@ function showDailyNotification() {
 <hr>
                    <div class="slider-container">
     <div class="slides">
-               <div class="slide active"><img src="image/IMG-20260425-WA0012.jpg" alt=""></div>
-     <div class="slide"><img src="image/IMG-20260601-WA0017.jpg" alt=""></div>
-     <div class="slide"><img src="image/IMG-20260603-WA0008.jpg" alt=""></div>
-                  <div class="slide"><img src="image/IMG-20260601-WA0024.jpg" alt=""></div>
-                  <div class="slide"><img src="image/IMG-20260603-WA0003.jpg" alt=""></div>
-                   <div class="slide"><img src="image/IMG-20260603-WA0006.jpg" alt=""></div>
-                  <div class="slide"><img src="image/IMG-20260603-WA0002.jpg" alt=""></div>
-                  <div class="slide"><img src="image/IMG-20260601-WA0021.jpg" alt=""></div>
-                  <div class="slide"><img src="image/IMG-20260601-WA0022(1).jpg" alt=""></div>
-   <div class="slide"><img  src="image/IMG-20260601-WA0025.jpg" alt=""></div>
-    <div class="slide"><img src="image/IMG-20260525-WA0040.jpg" alt=""></div>
-    <div class="slide"><img src="image/IMG-20260525-WA0043.jpg" alt=""></div>
-    <div class="slide"><img src="image/IMG-20260525-WA0044.jpg" alt=""></div>
-    <div class="slide"><img src="image/IMG-20260508-WA0009.jpg" alt=""></div>
-   <div class="slide"><img class="image" src="image/IMG_20260601_215428.jpg" alt=""></div>
-     <div class="slide"><img class="ig2" src="image/IMG-20260514-WA0000.jpg" alt=""></div>
-        <div class="slide"><img class="ig2" src="image/IMG-20260414-WA0033.jpg" alt=""></div>
-        <div class="slide"><img class="ig2" src="image/IMG-20260525-WA0004.jpg" alt=""></div>
-       <div class="slide"><img class="ig2" src="image/IMG-20260525-WA0044.jpg" alt=""></div>
-       <div class="slide"><img class="ig2" src="image/IMG-20260525-WA0043.jpg" alt=""></div>
-       <div class="slide"><img class="ig2" src="image/IMG-20260525-WA0040.jpg" alt=""></div>
+               <div class="slide active"><img  src="image/IMG-20260614-WA0009.jpg" alt=""></div>
+               <div class="slide"><img  src="image/IMG-20260614-WA0011.jpg" alt=""></div>
+     <div class="slide"><img   src="image/IMG-20260508-WA0009.jpg" alt=""></div>
+   <div class="slide"><img   src="image/IMG_20260601_215428.jpg" alt=""></div>
+     <div class="slide"><img   src="image/IMG-20260514-WA0000.jpg" alt=""></div>
+        <div class="slide"><img src="image/IMG-20260414-WA0033.jpg" alt=""></div>
+        <div class="slide"><img  src="image/IMG-20260525-WA0004.jpg" alt=""></div>
+       <div class="slide"><img   src="image/IMG-20260525-WA0044.jpg" alt=""></div>
+       <div class="slide"><img   src="image/IMG-20260525-WA0043.jpg" alt=""></div>
+       <div class="slide"><img  src="image/IMG-20260525-WA0040.jpg" alt=""></div>
      </div>   
     <h1 class="prev" onclick="changeSlide(-1)">&#10094;</h1>
     <h1 class="next" onclick="changeSlide(1)">&#10095;</h1>
 </div>
+    <style> 
+.slider-container {
+    position: relative;
+    max-width: 450px;
+    margin: auto;
+    overflow: hidden;
+    border-radius: 10px;
+}
+.slide {
+    display: none; /* Hide images by default */
+    width: 100%;
+}
+.slide img {
+    width: 100%;
+     height: 400px;
+    display: block;
+    margin-left:0.2cm;
+}
+.active {
+    display: block; /* Show the active image */
+}
+
+/* Navigation Buttons */
+h1 {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    padding: 15px;
+    cursor: pointer;
+}
+
+.next { right: 0; }
+.prev { left: 0; }
+
+h1:hover { background: rgba(0,0,0,0.8); 
+}
+</style>
+ <script> 
+ let currentIndex = 0;
+const slides = document.querySelectorAll('.slide');
+
+function changeSlide(direction) {
+    // 1. Remove 'active' class from current slide
+    slides[currentIndex].classList.remove('active');
+
+    // 2. Update the index
+    currentIndex += direction;
+
+    // 3. Handle Looping (if at end, go to start; if at start, go to end)
+    if (currentIndex >= slides.length) {
+        currentIndex = 0;
+    } else if (currentIndex < 0) {
+        currentIndex = slides.length - 1;
+    }
+
+    // 4. Add 'active' class to the new slide
+    slides[currentIndex].classList.add('active');
+}
+// Optional: Auto-play every 5 seconds
+setInterval(() => changeSlide(1), 2000);
+</script>
+
 <hr>
 
 <div class="shakti-grid">
