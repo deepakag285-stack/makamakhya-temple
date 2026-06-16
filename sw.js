@@ -16,8 +16,8 @@ self.addEventListener('fetch', (event) => {
     event.respondWith(fetch(event.request));
 });
   // service-worker.js file mein
-self.registration.showNotification("Welcome!", {
-  body: "Humara PWA khul gaya hai!",
-  icon: "/icon-192.png",
-  badge: "/badge.png"
+self.registration.showNotification("माँ कामाख्या!", {
+  body: "अचार्य जी 18 जून से 5 जुलाई 2026 तक दिल्ली, काशी, मुंबई में उपस्थित रहेंगे। किसी भी तरह की जानकारी के लिए संपर्क: 9813132098",
+  icon: "image/IMG-20260601-WA0021.jpg",
+  badge: "image/IMG-20260603-WA0011.jpg"
 });
