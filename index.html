@@ -1070,31 +1070,18 @@ setInterval(() => changeSlide(1), 2000);
             }
         }
     </script>
-  <script>
-    if ('serviceWorker' in navigator && 'PushManager' in window) {
-  navigator.serviceWorker.register('/sw.js')
-    .then((reg) => {
-      console.log('Service Worker Registered');
-      
-      // Notification ki permission maange
-      Notification.requestPermission().then((permission) => {
-        if (permission === 'granted') {
-          console.log('Notification permission granted.');
+        <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                // GitHub Pages के पाथ की समस्या से बचने के लिए './sw.js' लिखा है
+                navigator.serviceWorker.register('./sw.js')
+                    .then(reg => console.log('Service Worker Successfully Registered!', reg))
+                    .catch(err => console.error('Service Worker Registration Failed:', err));
+            });
         }
-      });
-    });
-}
+    </script>
 
-
-    if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js')
-            .then(reg => console.log('Service Worker Registered!', reg))
-            .catch(err => console.error('Service Worker Registration Failed!', err));
-    });
-}
- </script>
- <style>
+  <style>
     .slider-container {
     position: relative;
     max-width: 450px;
@@ -1135,69 +1122,7 @@ h1:hover { background: rgba(0,0,0,0.8);
 }
 
  </style>
-  <script>
-    if ("Notification" in window) {
-  Notification.requestPermission().then((permission) => {
-    if (permission === "granted") {
-      console.log("Notification permission granted!");
-    }
-  });
-}
-window.addEventListener('load', () => {
-  if (Notification.permission === 'granted') {
-    navigator.serviceWorker.ready.then((registration) => {
-      registration.showNotification('Hello!', {
-        body: 'App successfully load ho gayi hai.',
-        icon: '/icon-192.png'
-      });
-    });
-  }
-});
-    </script>
-     <script>
-    // 1. Service Worker Register karein
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/sw.js');
-    }
-
-    // 2. Notification Permission lein
-    Notification.requestPermission();
-
-    // 3. Polling: Har 30 seconds mein data.json check karein
- let lastKnownBody = ""; // Pehle body kuch nahi thi
-
-async function checkForUpdates() {
-  try {
-    const response = await fetch('data.json');
-    const data = await response.json();
-
-    // Check karein kya nayi body purani body se alag hai?
-    if (data.body !== lastKnownBody) {
-      showNotif(data.title, data.body);
-      
-      // Ab nayi body ko save kar lo taake agli baar compare ho sake
-      lastKnownBody = data.body;
-    }
-  } catch (err) {
-    console.log("Error:", err);
-  }
-}
-
-    function showNotif(title, body) {
-      if (Notification.permission === 'granted') {
-        navigator.serviceWorker.ready.then((reg) => {
-          reg.showNotification(title, { body: body, icon: 'images/1000103410.jpg' });
-        });
-      }
-    }
-
-    // Har 30 seconds mein check karein
-    setInterval(checkForUpdates, 30000);
-    
-    // Page load hote hi pehli baar check karein
-    checkForUpdates();
-  </script>
-
+ 
    </body>
 
   </body>
