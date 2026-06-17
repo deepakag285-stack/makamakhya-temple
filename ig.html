@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <title>Individual Photo Uploader</title>
+    <style>
+        .photo-container { display: flex; flex-wrap: wrap; gap: 15px; margin-top: 20px; }
+        .photo-item { border: 1px solid #ccc; padding: 10px; text-align: center; }
+        img { width: 100px; height: 100px; display: block; margin-bottom: 5px; }
+    </style>
+</head>
+<body>
+
+    <input type="file" id="fileInput" multiple accept="image/*">
+    <div id="gallery" class="photo-container"></div>
+
+    <script>
+        const fileInput = document.getElementById('fileInput');
+        const gallery = document.getElementById('gallery');
+
+        fileInput.addEventListener('change', function(e) {
+            gallery.innerHTML = ''; // Purani list clear karega
+            const files = e.target.files;
+
+            Array.from(files).forEach((file, index) => {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    // Photo aur button ka div banana
+                    const div = document.createElement('div');
+                    div.className = 'photo-item';
+                    
+                    div.innerHTML = `
+                        <img src="${event.target.result}">
+                        <button onclick="sendPhoto('${file.name}')">Send</button>
+                    `;
+                    gallery.appendChild(div);
+                }
+                reader.readAsDataURL(file);
+            });
+        });
+
+        function sendPhoto(fileName) {
+            alert(fileName + " send ho gayi!");
+            // Yahan aap apna AJAX ya Fetch API wala code likh sakte hain
+        }
+    </script>
+</body>
+</html>
+
