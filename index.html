@@ -45,7 +45,47 @@
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
 <body>
- 
+         <script>
+    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbykrj6PfrjCkZfErt6_Vgyj6KrMnFnohZtm6GOpZELl0XoZzq9zt1PoRa6Bux3X02ZR/exec"; 
+    const startTime = Date.now();
+let visitCount = localStorage.getItem("visitCount") || "0";
+visitCount = parseInt(visitCount) + 1;
+localStorage.setItem("visitCount", visitCount.toString());
+    // Device ka detailed naam nikalne ka function
+    async function getFullDeviceName() {
+        // Modern browsers ke liye (Chrome/Edge/Android)
+        if (navigator.userAgentData) {
+            const highEntropyValues = await navigator.userAgentData.getHighEntropyValues(['model', 'platform', 'platformVersion']);
+            return `${highEntropyValues.platform} - ${highEntropyValues.model || 'Unknown Model'}`;
+        }
+        // Purane browsers ke liye fallback
+        return navigator.userAgent.split('(')[1].split(')')[0]; 
+    }
+
+    async function sendData() {
+        const stayDuration = Math.round((Date.now() - startTime) / 1000) + " seconds";
+        const deviceName = await getFullDeviceName(); // Device name fetch karein
+        
+        const log = {
+            time: new Date().toLocaleTimeString(),
+            device: deviceName,
+            duration: stayDuration,
+            visits:visitCount
+        };
+        
+        fetch(WEB_APP_URL, {
+            method: "POST",
+            mode: "no-cors",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(log)
+        });
+    }
+
+    window.addEventListener("beforeunload", sendData);
+</script>
+
+
+
  <!--image apna ap akaar apna p gyab hone-->
     <div id="welcome-overlay">
     <div class="banner-content">
