@@ -45,32 +45,35 @@
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
 <body>
-         <script>
-    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzBSi0oIPmsIFDNvYZxvvqNW9IYp5Ng8mQd98nZqWtG7u9Hhhh4iEiml2ZHgxRlx_pM/exec"; 
-    const startTime = Date.now();
-let visitCount = localStorage.getItem("visitCount") || "0";
-visitCount = parseInt(visitCount) + 1;
-localStorage.setItem("visitCount", visitCount.toString());
-    // Device ka detailed naam nikalne ka function
+ <script>
+    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzyG3197J3S5LVJ6MknM0K7B8t0dpq3LGN7izqmIcVvYjn38-PdkIDM1fWMMpOWy4akdw/exec"; 
+    const entryTime = new Date(); // Site khulne ka exact waqt
+
+    // Visit Count Logic
+    let visitCount = localStorage.getItem('visitCount') || 0;
+    visitCount = parseInt(visitCount) + 1;
+    localStorage.setItem('visitCount', visitCount);
+
     async function getFullDeviceName() {
-        // Modern browsers ke liye (Chrome/Edge/Android)
         if (navigator.userAgentData) {
-            const highEntropyValues = await navigator.userAgentData.getHighEntropyValues(['model', 'platform', 'platformVersion']);
-            return `${highEntropyValues.platform} - ${highEntropyValues.model || 'Unknown Model'}`;
+            const highEntropyValues = await navigator.userAgentData.getHighEntropyValues(['model', 'platform']);
+            return `${highEntropyValues.platform} - ${highEntropyValues.model || 'Unknown'}`;
         }
-        // Purane browsers ke liye fallback
         return navigator.userAgent.split('(')[1].split(')')[0]; 
     }
 
     async function sendData() {
-        const stayDuration = Math.round((Date.now() - startTime) / 1000) + " seconds";
-        const deviceName = await getFullDeviceName(); // Device name fetch karein
+        const exitTime = new Date(); // Site chhodne ka exact waqt
+        const stayDuration = Math.round((exitTime - entryTime) / 1000) + " seconds";
+        const deviceName = await getFullDeviceName();
         
         const log = {
-            time: new Date().toLocaleTimeString(),
+            date: exitTime.toLocaleDateString(),
+            entry: entryTime.toLocaleTimeString(),
+            exit: exitTime.toLocaleTimeString(), // Exit time add kiya
             device: deviceName,
             duration: stayDuration,
-            visits:visitCount
+            visits: visitCount
         };
         
         fetch(WEB_APP_URL, {
@@ -83,6 +86,7 @@ localStorage.setItem("visitCount", visitCount.toString());
 
     window.addEventListener("beforeunload", sendData);
 </script>
+
 
 
 
